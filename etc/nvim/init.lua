@@ -55,10 +55,14 @@ require("trailing-whitespace")
 
 vim.pack.add({
   "https://github.com/nvim-mini/mini.nvim",
+  "https://github.com/stevearc/oil.nvim",
 })
 
 require("mini.misc").setup()
+local now = function(f) MiniMisc.safely("now", f) end
 local later = function(f) MiniMisc.safely("later", f) end
+
+now(function() require("oil").setup() end)
 
 later(function()
   vim.diagnostic.config({
@@ -83,12 +87,14 @@ later(function() require("mini.surround").setup() end)
 
 later(function() require("mini.bracketed").setup() end)
 later(function() require("mini.bufremove").setup() end)
-later(function() require("mini.files").setup() end)
 later(function() require("mini.pick").setup() end)
 
 local new_scratch_buffer = function()
   vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true))
 end
+
+vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "_", "<Cmd>Oil getcwd()<CR>", { desc = "Open current directory" })
 
 vim.keymap.set("n", "<Leader>ba", "<Cmd>b#<CR>", { desc = "Buffer alternate" })
 vim.keymap.set("n", "<Leader>bd", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Buffer delete" })
@@ -96,9 +102,6 @@ vim.keymap.set("n", "<Leader>bD", "<Cmd>lua MiniBufremove.delete(0, true)<CR>", 
 vim.keymap.set("n", "<Leader>bs", new_scratch_buffer, { desc = "Buffer scratch" })
 vim.keymap.set("n", "<Leader>bw", "<Cmd>lua MiniBufremove.wipeout()<CR>", { desc = "Buffer wipeout" })
 vim.keymap.set("n", "<Leader>bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", { desc = "Buffer wipeout!" })
-
-vim.keymap.set("n", "<Leader>ed", "<Cmd>lua MiniFiles.open()<CR>", { desc = "Explore current directory" })
-vim.keymap.set("n", "<Leader>ef", "<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "Explore file directory" })
 
 vim.keymap.set("n", "<Leader>fb", "<Cmd>Pick buffers<CR>", { desc = "Find buffers" })
 vim.keymap.set("n", "<Leader>ff", "<Cmd>Pick files<CR>", { desc = "Find files" })
