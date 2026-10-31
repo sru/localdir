@@ -31,13 +31,7 @@ Bootstrap login shell by creating `~/.profile`:
 
 ```sh
 . "${HOME}/.local/etc/sh/profile.sh"
-export ENV="${LOCALDIR}/state/sh/interactive.sh"
-```
-
-`${LOCALDIR}/state/sh/interactive.sh` contains interactive shell.
-
-```sh
-exec /usr/bin/fish
+export ENV="${LOCALDIR}/etc/sh/interactive.sh"
 ```
 
 Optionally override `$XDG_CONFIG_HOME` for systemd with `user@` service override.
