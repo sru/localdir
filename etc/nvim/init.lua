@@ -116,5 +116,5 @@ vim.keymap.set("n", "<Leader>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", { desc = "
 vim.keymap.set("n", "<Leader>ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", { desc = "LSP Code lens" })
 vim.keymap.set("n", "<Leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", { desc = "LSP Rename" })
 vim.keymap.set("n", "<Leader>lR", "<Cmd>lua vim.lsp.buf.references()<CR>", { desc = "LSP Reference" })
-vim.keymap.set("n", "<Leader>ls", "<Cmd>lua vim.lsp.buf.definintions()<CR>", { desc = "LSP Definition" })
-vim.keymap.set("n", "<Leader>lt", "<Cmd>lua vim.lsp.buf.type_definitions()<CR>", { desc = "LSP Type definition" })
+vim.keymap.set("n", "<Leader>ls", "<Cmd>lua vim.lsp.buf.definintion()<CR>", { desc = "LSP Definition" })
+vim.keymap.set("n", "<Leader>lt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", { desc = "LSP Type definition" })
