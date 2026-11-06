@@ -34,8 +34,9 @@ vim.o.smartcase = true
 vim.o.modeline = false
 vim.o.undofile = true
 vim.o.undolevels = 1000
+vim.o.completeopt = "menu,menuone,noselect,popup"
 vim.o.wildmenu = true
-vim.o.wildmode = "list:longest"
+vim.o.wildmode = "noselect:full"
 
 vim.cmd.colorscheme("seon")
 vim.cmd("filetype indent off")
